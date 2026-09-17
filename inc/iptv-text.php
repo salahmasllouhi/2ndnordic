@@ -90,10 +90,10 @@ if (!function_exists('iptv_text')) {
             }
         }
 
-        // Homepage copy is managed in WordPress (ACF/post meta). Do not fall
-        // back to template strings here: that would make removed or untranslated
-        // content silently reappear from the theme instead of remaining editable
-        // in the page database.
-        return '';
+        // A fresh theme install can load before ACF has registered its local
+        // field group, and link/repeater fields may intentionally be empty.
+        // Keep the page complete in both cases; editors' saved ACF/meta values
+        // above always take precedence over this template fallback.
+        return $default;
     }
 }
