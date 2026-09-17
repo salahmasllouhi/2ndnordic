@@ -42,7 +42,10 @@ if (!function_exists('nordictv_migrate_homepage_acf_content')) {
         }
 
         $page_id = (int) get_option('page_on_front');
-        $marker  = '_nordictv_homepage_acf_migration_20260917';
+        // A separate repair marker lets sites which already ran the original
+        // migration fill only the link records that were left empty while ACF
+        // was still loading after a fresh theme install.
+        $marker  = '_nordictv_homepage_acf_migration_20260918';
 
         if (!$page_id || get_post_meta($page_id, $marker, true)) {
             return;
@@ -69,7 +72,12 @@ if (!function_exists('nordictv_migrate_homepage_acf_content')) {
 
         foreach ($links as $field_key => $value) {
             $field = function_exists('acf_get_field') ? acf_get_field($field_key) : false;
-            if ($field && !metadata_exists('post', $page_id, $field['name'])) {
+            // Link fields are stored as serialized arrays. On a first deploy an
+            // empty placeholder can exist before ACF has registered the field;
+            // treat only that empty placeholder as missing. Never overwrite an
+            // editor's non-empty value.
+            $existing = $field ? get_post_meta($page_id, $field['name'], true) : null;
+            if ($field && ($existing === '' || !metadata_exists('post', $page_id, $field['name']))) {
                 update_field($field_key, $value, $page_id);
             }
         }
