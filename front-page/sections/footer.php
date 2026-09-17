@@ -153,13 +153,14 @@
                     )); ?>
                 <?php else: ?>
                     <?php
-                    // These four all existed as pages while this column pointed
-                    // every one of them at '#'.
+                    // These legal pages resolve through Polylang, so each footer
+                    // points to the equivalent page in the current language.
                     iptv_footer_links(array(
                         array('slug' => 'about-us', 'key' => 'footer_link_about', 'label' => 'About Us'),
-                        array('slug' => 'privacy-policy', 'key' => 'footer_link_privacy', 'label' => 'Privacy Policy'),
-                        array('slug' => 'terms-of-services', 'key' => 'footer_link_terms', 'label' => 'Terms of Service'),
+                        array('slug' => 'privacy-policy-2', 'key' => 'footer_link_privacy', 'label' => 'Privacy Policy'),
+                        array('slug' => 'terms-of-service', 'key' => 'footer_link_terms', 'label' => 'Terms of Service'),
                         array('slug' => 'return-refund-policy', 'key' => 'footer_link_refund', 'label' => 'Return & Refund Policy'),
+                        array('slug' => 'dmca-copyright-notice', 'key' => 'footer_link_dmca', 'label' => 'DMCA & Copyright Notice'),
                     ));
                     ?>
                 <?php endif; ?>

@@ -70,6 +70,7 @@ add_action('init', function () {
     pll_register_string('footer_link_privacy', 'Privacy Policy', $group);
     pll_register_string('footer_link_terms', 'Terms of Service', $group);
     pll_register_string('footer_link_refund', 'Return & Refund Policy', $group);
+    pll_register_string('footer_link_dmca', 'DMCA & Copyright Notice', $group);
 
     // ── FAQ hub (archive-faq.php) ────────────────────────────────────────────
     // The archive has no page behind it, so there is no ACF field for iptv_text()
