@@ -803,6 +803,7 @@ require_once get_template_directory() . '/inc/contact-cards.php';
 // Replaces the old "Content Localizing" admin screen (inc/content-settings.php),
 // which stored copy in an `iptv_content` option keyed by the retired multisite slugs.
 require_once get_template_directory() . '/inc/iptv-text.php';
+require_once get_template_directory() . '/inc/homepage-acf-migration.php';
 
 // Include User Guide Shortcode (displays posts from user-guide category)
 require_once get_template_directory() . '/inc/user-guide-shortcode.php';
