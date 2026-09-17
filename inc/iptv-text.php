@@ -69,10 +69,10 @@ if (!function_exists('iptv_text')) {
             }
         }
 
-        if ($default !== '' && function_exists('pll__')) {
-            return pll__($default);
-        }
-
-        return $default;
+        // Homepage copy is managed in WordPress (ACF/post meta). Do not fall
+        // back to template strings here: that would make removed or untranslated
+        // content silently reappear from the theme instead of remaining editable
+        // in the page database.
+        return '';
     }
 }
